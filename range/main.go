@@ -9,4 +9,11 @@ func main(){
 	for i := 0; i < len(names); i++{
 		fmt.Println("This girl broke my heart",names[i])
 	}
+
+	fmt.Println("\nUsing the range keyword instead\n")
+
+	for i,name := range names{
+		fmt.Println(i+1,"Thiis girl also broke my heart",name)
+	}
+	
 }
