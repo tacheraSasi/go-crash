@@ -11,7 +11,7 @@ func returnFunc(x string) func(){
 
 func main(){
 	inLineFunc := func(){
-		fmt.Println("This is an in line func similar to arrow function in javascript")
+		fmt.Println("This is an in line func similar to 0 function in javascript")
 	}
 	inLineFunc()
 
