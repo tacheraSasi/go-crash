@@ -15,6 +15,8 @@ func changeX(point *Point, xVal int32){
 //struct method that does not change 
 //Anything from the actual point
 func (p Point) getPointsInAnArray() []int32 {
+	arr := []int32{p.x,p.y}
+	return arr
 
 }
 
@@ -25,6 +27,10 @@ func main(){
 	fmt.Println(p1)
 	changeX(p1,100)
 	fmt.Println(p1)
+
+	//printing out the array of the points
+	//From the Point struct method
+	
 
 	
 }
