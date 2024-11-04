@@ -13,8 +13,8 @@ func changeX(point *Point, xVal int32){
 }
 
 //struct method that does not change 
-//Anythin from the actual point
-func (p Point){
+//Anything from the actual point
+func (p Point) getPointsInAnArray() []int32 {
 
 }
 
