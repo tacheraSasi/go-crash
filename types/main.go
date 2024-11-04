@@ -20,6 +20,15 @@ func (p Point) getPointsInAnArray() []int32 {
 
 }
 
+//Struct method that change the values in the actual point
+//It needs to recieve a pointer to the struct so that i can 
+//Modify it instead of making a copy
+func (p *Point )changeVal(x,y int32){
+	p.x = x
+	p.y = y
+
+}
+
 func main(){
 	p1 := &Point{y:3}//only giving the value to one item in the struct
 	//Leaving the other one to take the default value of its type
@@ -30,7 +39,13 @@ func main(){
 
 	//printing out the array of the points
 	//From the Point struct method
-	
+	fmt.Println(p1.getPointsInAnArray())
+
+	//Changing then calues of the point using the struct method
+	p1.changeVal(34,65)
+	//Then Printing out their values once again
+	fmt.Println(p1)
+
 
 	
 }
