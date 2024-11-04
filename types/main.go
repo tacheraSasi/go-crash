@@ -8,13 +8,16 @@ type Point struct{
 }
 // The function to change the value of x in a pointer
 //From the default using an pointer 
+func changeX(point *Point, xVal int32){
+	point.x = xVal//Changing the value of point.x through the actual pointer
+}
 
 func main(){
 	p1 := &Point{y:3}//only giving the value to one item in the struct
 	//Leaving the other one to take the default value of its type
 
 	fmt.Println(p1)
-	change(p1)
+	changeX(p1,100)
 	fmt.Println(p1)
 
 	
