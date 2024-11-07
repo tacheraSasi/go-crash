@@ -18,5 +18,13 @@ func main()  {
 		dir = os.Args[1]
 	}
 
+	//opening the directory
+	directory ,err := os.Open(dir)
+	if err != nil{
+		fmt.Println("Error while opening the directory",err)
+	}
+
+	defer directory.Close() // Will close the directory
+
 	
 }
