@@ -3,28 +3,45 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
 )
 
-//This is a simple implemenatation of the ls command in linux
-//Built with the golang programming language by Tachera W
-
-
-
-
-func main()  {
+func main() {
+	// Get the current directory or take from args
 	dir := "."
 	if len(os.Args) > 1 {
-		fmt.Println(os.Args[0])//for curiosity only 
 		dir = os.Args[1]
 	}
 
-	//opening the directory
-	directory ,err := os.Open(dir)
-	if err != nil{
-		fmt.Println("Error while opening the directory",err)
+	// Open the directory
+	directory, err := os.Open(dir)
+	if err != nil {
+		fmt.Println("Error opening directory:", err)
+		return
+	}
+	defer directory.Close()
+
+	// Read the directory contents
+	files, err := directory.Readdir(-1) // -1 means read all entries
+	if err != nil {
+		fmt.Println("Error reading directory:", err)
+		return
 	}
 
-	defer directory.Close() // Will close the directory
+	// Loop through the files and display information
+	fmt.Println("Listing files in directory:", dir)
+	for _, file := range files {
+		// File name
+		fmt.Printf("%-25s", file.Name())
 
-	
+		// File size
+		fmt.Printf("%-10d", file.Size())
+
+		// File permissions
+		fmt.Printf("%-10s", file.Mode().String())
+
+		// Last modified time
+		modTime := file.ModTime().Format(time.RFC1123)
+		fmt.Printf("%-20s\n", modTime)
+	}
 }
